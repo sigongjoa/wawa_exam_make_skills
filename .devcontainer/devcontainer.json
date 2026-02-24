@@ -1,0 +1,17 @@
+{
+  "name": "Wawa Exam Builder Sandbox",
+  "build": {
+    "dockerfile": "../Dockerfile"
+  },
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "myriad-dreamin.tinymist", // Typst 프리뷰 확장 프로그램
+        "ms-python.python",
+        "ms-azuretools.vscode-docker"
+      ]
+    }
+  },
+  "postCreateCommand": "npm install && pip3 install duckduckgo-search beautifulsoup4 --break-system-packages",
+  "remoteUser": "node"
+}
