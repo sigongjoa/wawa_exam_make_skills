@@ -1,25 +1,25 @@
 import sys
+import json
 from duckduckgo_search import DDGS
 
-# 에이전트가 지문 검색을 위해 사용할 기본 스크립트입니다.
-# 사용법: python search_source.py "기후 변화 최신 논문"
-
-def search_text(query):
-    print(f"[{query}]에 대한 지문 소스를 검색 중입니다...
-")
-    try:
-        results = DDGS().text(query, max_results=3)
-        for i, r in enumerate(results):
-            print(f"--- 소스 {i+1} ---")
-            print(f"제목: {r['title']}")
-            print(f"링크: {r['href']}")
-            print(f"본문 요약: {r['body']}
-")
-    except Exception as e:
-        print(f"검색 중 오류 발생: {e}")
+# v1.1: 다중 지문 검색 지원 및 JSON 출력 지원
+def search_topics(queries):
+    all_results = {}
+    with DDGS() as ddgs:
+        for q in queries:
+            try:
+                results = list(ddgs.text(q, max_results=2))
+                all_results[q] = results
+            except Exception as e:
+                all_results[q] = f"Error: {str(e)}"
+    
+    # 에이전트가 소비하기 좋게 JSON으로 출력
+    print(json.dumps(all_results, ensure_ascii=False, indent=2))
 
 if __name__ == "__main__":
     if len(sys.argv) > 1:
-        search_text(sys.argv[1])
+        # 콤마로 구분된 여러 주제를 받음
+        topics = sys.argv[1].split(',')
+        search_topics(topics)
     else:
-        print("검색어를 입력해주세요. 예: python search_source.py '인공지능 윤리'")
+        print("Usage: python3 search_source.py 'topic1,topic2'")

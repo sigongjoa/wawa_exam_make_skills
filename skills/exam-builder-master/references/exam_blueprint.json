@@ -1,0 +1,34 @@
+{
+  "exam_name": "Wawa 15문항 국어/영어 통합 모의고사",
+  "total_questions": 15,
+  "structure": [
+    {
+      "subject": "Korean",
+      "passage_id": "K1",
+      "topic_suggestion": "인문/철학",
+      "question_range": [1, 4],
+      "types": ["주제 파악", "세부 내용 일치", "추론", "어휘"]
+    },
+    {
+      "subject": "Korean",
+      "passage_id": "K2",
+      "topic_suggestion": "과학/기술",
+      "question_range": [5, 8],
+      "types": ["핵심 원리 이해", "데이터 해석", "논리 구조", "어휘"]
+    },
+    {
+      "subject": "English",
+      "passage_id": "E1",
+      "topic_suggestion": "사회/경제",
+      "question_range": [9, 12],
+      "types": ["Main Idea", "Vocabulary", "Inference", "Sentence Insertion"]
+    },
+    {
+      "subject": "English",
+      "passage_id": "E2",
+      "topic_suggestion": "문화/예술",
+      "question_range": [13, 15],
+      "types": ["Topic", "Blank Filling", "Summary"]
+    }
+  ]
+}
